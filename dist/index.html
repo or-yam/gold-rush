@@ -5,11 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Gold-Rush</title>
     <link rel="stylesheet" href="./styles/style.css" />
+    <script src="/jquery/dist/jquery.js"></script>
+    <script src="/handlebars/dist/handlebars.js"></script>
   </head>
   <body>
+    <div id="board-container"></div>
+    <div id="scores-container"></div>
 
+    <script id="board-template" type="text/x-handlebars-template">
+      {{#each this}}
+        <div class='row'>
+          {{#each this}}
+            <div class='box {{this}}' >
+              {{this}}
+            </div>
+          {{/each}}
+        </div>
+      {{/each}}
+    </script>
 
-    
+    <script id="scores-template" type="text/x-handlebars-template">
+      {{#each this}}
+        <div class='player'>
+          <div class='plyer-name'>
+            Player: {{this.icon}}
+          </div>
+          <div class='player-score'>
+            Score: {{this.score}}
+          </div>
+        </div>
+      {{/each}}
+    </script>
+
     <script src="main.js" type="module"></script>
   </body>
 </html>

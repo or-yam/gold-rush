@@ -1,13 +1,13 @@
-const Matrix = require('./Matrix');
+import { Matrix } from './Matrix.js';
 
-class GoldRush extends Matrix {
+export class GoldRush extends Matrix {
   constructor(rows, columns) {
     super(rows, columns);
     this.rowsNum = rows;
     this.columnsNum = columns;
-    this.player1 = { x: 0, y: 0, icon: 1, score: 0 };
-    this.player2 = { x: rows - 1, y: columns - 1, icon: 2, score: 0 };
-    this.coinsRatio = 0.3;
+    this.player1 = { x: 0, y: 0, icon: 'p1', score: 0 };
+    this.player2 = { x: rows - 1, y: columns - 1, icon: 'p2', score: 0 };
+    this.coinsRatio = 0.5;
     this.coins = Math.floor(rows * columns * this.coinsRatio);
     this.wallsRatio = 0.2;
     this.walls = Math.floor(rows * columns * this.wallsRatio);
@@ -22,7 +22,7 @@ class GoldRush extends Matrix {
     for (let c = 0; c < this.coins; c++) {
       let x = Math.floor(Math.random() * Math.floor(this.rowsNum));
       let y = Math.floor(Math.random() * Math.floor(this.columnsNum));
-      if (this.matrix[x][y] === '.') {
+      if (this.matrix[x][y] === 'e') {
         this.matrix[x][y] = 'C';
       }
     }
@@ -32,7 +32,7 @@ class GoldRush extends Matrix {
     for (let w = 0; w < this.walls; w++) {
       let x = Math.floor(Math.random() * Math.floor(this.rowsNum));
       let y = Math.floor(Math.random() * Math.floor(this.columnsNum));
-      if (this.matrix[x][y] === '.') {
+      if (this.matrix[x][y] === 'e') {
         this.matrix[x][y] = 'W';
       }
     }
@@ -56,23 +56,21 @@ class GoldRush extends Matrix {
       ? newPos.x++
       : console.log('note valid direction');
     if (this.matrix[newPos.x][newPos.y] === 'C') {
-      player.coins++;
-      this.matrix[player.x][player.y] = '.';
+      player.score++;
+      this.matrix[player.x][player.y] = 'e';
       player.x = newPos.x;
       player.y = newPos.y;
       this.loadPlayers();
-    } else if (this.matrix[newPos.x][newPos.y] === '.') {
-      this.matrix[player.x][player.y] = '.';
+    } else if (this.matrix[newPos.x][newPos.y] === 'e') {
+      this.matrix[player.x][player.y] = 'e';
       player.x = newPos.x;
       player.y = newPos.y;
       this.loadPlayers();
     } else if (
       !this.matrix[newPos.x][newPos.y] ||
-      this.matrix[newPos.x][newPos.y] !== '.'
+      this.matrix[newPos.x][newPos.y] !== 'e'
     ) {
       console.log(`im sorry im afraid i can't do that`);
     }
   }
 }
-
-module.exports = GoldRush;

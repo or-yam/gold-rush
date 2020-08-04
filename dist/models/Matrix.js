@@ -1,4 +1,4 @@
-class Matrix {
+export class Matrix {
   constructor(rows, columns) {
     this.matrix = this.generateMatrix(rows, columns);
   }
@@ -8,7 +8,7 @@ class Matrix {
     for (let r = 0; r < rows; r++) {
       let row = [];
       for (let c = 0; c < columns; c++) {
-        row.push('.');
+        row.push('e');
       }
       matrix.push(row);
     }
@@ -57,4 +57,4 @@ class Matrix {
   }
 }
 
-module.exports = Matrix;
+
