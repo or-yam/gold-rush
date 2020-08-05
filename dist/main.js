@@ -3,6 +3,7 @@ import { Renderer } from './views/Renderer.js';
 
 const renderer = new Renderer();
 let board;
+
 $('#board-container').hide();
 $('#scores-container').hide();
 $('#end-game').hide();
@@ -19,6 +20,19 @@ const newGame = () => {
   $('#scores-container').show();
   $('#rows').val('');
   $('#columns').val('');
+};
+
+const endGame = () => {
+  $('#board-container').hide();
+  $('#scores-container').hide();
+  $('#end-game').show();
+  if (board.player1.score > board.player2.score) {
+    $('#winner').html(`${board.player1.icon} WINS`);
+  } else if (board.player1.score < board.player2.score) {
+    $('#winner').html(`${board.player2.icon} WINS`);
+  } else {
+    $('#winner').html(`NO ONE WINS`);
+  }
 };
 
 $('#start-btn').on('click', newGame);
@@ -49,16 +63,7 @@ $(document).keypress((e) => {
     renderer.renderBoard(board.matrix);
     renderer.renderScores([board.player1, board.player2]);
     if (!board.coins) {
-      $('#board-container').hide();
-      $('#scores-container').hide();
-      $('#end-game').show();
-      if (board.player1.score > board.player2.score) {
-        $('#winner').html(`${board.player1.icon} WINS`);
-      } else if (board.player1.score < board.player2.score) {
-        $('#winner').html(`${board.player2.icon} WINS`);
-      } else {
-        $('#winner').html(`NO ONE WINS`);
-      }
+      endGame();
     }
   }
 });
