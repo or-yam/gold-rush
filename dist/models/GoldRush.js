@@ -7,8 +7,7 @@ export class GoldRush extends Matrix {
     this.columnsNum = columns;
     this.player1 = { x: 0, y: 0, icon: 'p1', score: 0 };
     this.player2 = { x: rows - 1, y: columns - 1, icon: 'p2', score: 0 };
-    this.coinsRatio = 0.5;
-    this.coins = Math.floor(rows * columns * this.coinsRatio);
+    this.coins = 0;
     this.wallsRatio = 0.2;
     this.walls = Math.floor(rows * columns * this.wallsRatio);
   }
@@ -19,10 +18,14 @@ export class GoldRush extends Matrix {
   }
 
   loadCoins() {
-    for (let c = 0; c < this.coins; c++) {
+    const ratio = 0.5;
+    const coinsAmount = Math.floor(this.rowsNum * this.columnsNum * ratio);
+    console.log(coinsAmount);
+    for (let c = 0; c < coinsAmount; c++) {
       let x = Math.floor(Math.random() * Math.floor(this.rowsNum));
       let y = Math.floor(Math.random() * Math.floor(this.columnsNum));
       if (this.matrix[x][y] === 'e') {
+        this.coins++;
         this.matrix[x][y] = 'C';
       }
     }
@@ -57,6 +60,7 @@ export class GoldRush extends Matrix {
       : console.log('note valid direction');
     if (this.matrix[newPos.x][newPos.y] === 'C') {
       player.score++;
+      this.coins--;
       this.matrix[player.x][player.y] = 'e';
       player.x = newPos.x;
       player.y = newPos.y;

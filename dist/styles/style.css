@@ -1,4 +1,15 @@
+:root {
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
 body {
+  background-color: #2d2f31;
+  width: 100vw;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -31,26 +42,94 @@ body {
 }
 
 #scores-container {
+  background-color: #930000;
+  width: 60%;
+  font-family: 'Mortal Kombat 2';
   margin: 20px;
   display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.player {
+  text-align: center;
+  display: grid;
+  justify-content: center;
+  align-items: center;
 }
 
 .C {
-  background-color: yellow;
+  background-color: #c0392b;
+  background-image: url(https://iconape.com/wp-content/files/nb/247541/png/mortal-combat-logo.png);
+  background-size: 50px;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .W {
   background-color: gray;
+  background-image: url(https://image.flaticon.com/icons/svg/844/844978.svg);
 }
 
-.p1{
-    background-color: blue;
+.p1 {
+  background-color: #3498db;
+  background-image: url(https://icons.iconarchive.com/icons/iconshock/mortal-kombat/128/mortal-kombat-2-icon.png);
+  background-image: url(https://vignette.wikia.nocookie.net/mkwikia/images/3/3c/Subzero-mk2-fix.gif/revision/latest?cb=20171230230014);
+  background-size: cover;
 }
 
-.p2{
-    background-color: chartreuse;
+.p2 {
+  background-color: #f1c40f;
+  background-image: url(https://vignette.wikia.nocookie.net/mkwikia/images/f/f3/Scorpion-mk2-fix1.gif/revision/latest?cb=20081004200429);
+  background-size: cover;
+  transform: scaleX(-1);
 }
 
-.e{
-    background-color: chocolate;
+.e {
+  background-color: gray;
+}
+
+#new-game {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  font-family: 'Mortal Kombat 2';
+  text-align: center;
+  color: #930000;
+  background-image: url(http://mortalkombatwarehouse.com/mk2/arenas/goroslair/01.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 70%;
+  height: 70%;
+}
+
+#new-game input {
+  background-image: linear-gradient(yellow, red);
+  width: 30%;
+  height: 100%;
+  font-family: 'Mortal Kombat 2';
+  font-size: xx-large;
+  text-align: center;
+}
+
+#start {
+  background-color: #930000;
+}
+
+#end {
+  width: 500px;
+  height: 500px;
+  z-index: 5;
+  position: fixed;
+  top: 7%;
+  left: 25%;
+  /* margin-top: -250;
+  margin-left: -500px; */
+  /* background-image: url(https://64media.tumblr.com/e0c55fc60b703206f5b50d61f08c66d1/tumblr_mgj1s8HP4A1rvbjw7o1_500.gif); */
+  background-image: url(https://i.kym-cdn.com/photos/images/newsfeed/000/322/573/91d.png);
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
 }
