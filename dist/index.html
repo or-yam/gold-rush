@@ -11,10 +11,10 @@
     <div id="new-game">
       <h1>CHOOSE YOUR DESTINY</h1>
       <h3>ROWS</h3>
-      <input placeholder="#" type="number" id="rows" min="4" max="15" />
+      <input placeholder="#" type="number" id="rows" />
       <h3>COLUMNS</h3>
-      <input placeholder="#" type="number" id="columns" min="4" max="15" />
-      <button id="start">
+      <input placeholder="#" type="number" id="columns" />
+      <button id="start-btn">
         <img
           src="http://mortalkombatwarehouse.com/mkx/kk_icons/towers/026.png"
           alt=""
@@ -22,11 +22,20 @@
       </button>
     </div>
 
-    <div id="end"></div>
+    <div id="end-game">
+      <div id="winner"></div>
+      <img
+        src="https://64.media.tumblr.com/e0c55fc60b703206f5b50d61f08c66d1/tumblr_mgj1s8HP4A1rvbjw7o1_500.gif"
+        alt=""
+      />
+      <button id="play-again-btn">PLAY AGAIN?</button>
+    </div>
 
     <div id="board-container"></div>
+
     <div id="scores-container"></div>
 
+    <!-- BOARD-TEMPLATE -->
     <script id="board-template" type="text/x-handlebars-template">
       {{#each this}}
         <div class='row'>
@@ -38,6 +47,7 @@
       {{/each}}
     </script>
 
+    <!-- SCORES-TEMPLATE -->
     <script id="scores-template" type="text/x-handlebars-template">
       {{#each this}}
         <div class='player'>

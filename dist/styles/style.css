@@ -4,6 +4,7 @@
 * {
   margin: 0;
   padding: 0;
+  font-family: 'Mortal Kombat 2';
 }
 
 body {
@@ -113,23 +114,24 @@ body {
   text-align: center;
 }
 
-#start {
+#start-btn {
   background-color: #930000;
 }
 
-#end {
+#end-game {
   width: 500px;
   height: 500px;
   z-index: 5;
-  position: fixed;
-  top: 7%;
-  left: 25%;
-  /* margin-top: -250;
-  margin-left: -500px; */
-  /* background-image: url(https://64media.tumblr.com/e0c55fc60b703206f5b50d61f08c66d1/tumblr_mgj1s8HP4A1rvbjw7o1_500.gif); */
-  background-image: url(https://i.kym-cdn.com/photos/images/newsfeed/000/322/573/91d.png);
-  background-color: transparent;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
+  display: grid;
+}
+
+#winner {
+  font-family: 'Mortal Kombat 2';
+  font-size: 80px;
+  text-align: center;
+}
+
+#play-again-btn {
+  font-size: xx-large;
+  background-color: #930000;
 }

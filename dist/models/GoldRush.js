@@ -20,7 +20,6 @@ export class GoldRush extends Matrix {
   loadCoins() {
     const ratio = 0.5;
     const coinsAmount = Math.floor(this.rowsNum * this.columnsNum * ratio);
-    console.log(coinsAmount);
     for (let c = 0; c < coinsAmount; c++) {
       let x = Math.floor(Math.random() * Math.floor(this.rowsNum));
       let y = Math.floor(Math.random() * Math.floor(this.columnsNum));
