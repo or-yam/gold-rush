@@ -1,5 +1,7 @@
 import { Matrix } from './Matrix.js';
 
+const coinSound = new Audio('./assets/sounds/collect.mp3');
+
 export class GoldRush extends Matrix {
   constructor(rows, columns) {
     super(rows, columns);
@@ -64,6 +66,9 @@ export class GoldRush extends Matrix {
       player.x = newPos.x;
       player.y = newPos.y;
       this.loadPlayers();
+      coinSound.pause();
+      coinSound.currentTime = 0;
+      coinSound.play();
     } else if (this.matrix[newPos.x][newPos.y] === 'e') {
       this.matrix[player.x][player.y] = 'e';
       player.x = newPos.x;

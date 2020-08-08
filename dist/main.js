@@ -4,8 +4,9 @@ import { Renderer } from './views/Renderer.js';
 const matrixLimits = { max: 15, min: 4 };
 
 const startGameSound = new Audio('./assets/sounds/newGame.mp3');
-
-
+const endGameSound = new Audio('./assets/sounds/endGame.mp3');
+const moveSound = new Audio('./assets/sounds/right.mp3');
+const reMatchSound = new Audio('./assets/sounds/rematch.mp3');
 
 const renderer = new Renderer();
 let board;
@@ -49,12 +50,14 @@ const endGame = () => {
   } else {
     $('#winner').html(`NO ONE WINS`);
   }
+  endGameSound.play();
 };
 
 $('#start-btn').on('click', newGame);
 
 $('#play-again-btn').on('click', () => {
-  window.location.href = '/';
+  reMatchSound.play();
+  setTimeout(() => (window.location.href = '/'), 1500);
 });
 
 $(document).keypress((e) => {
@@ -76,6 +79,9 @@ $(document).keypress((e) => {
       : e.which === 108
       ? board.move('right', board.player2)
       : null;
+    moveSound.pause();
+    moveSound.currentTime = 0;
+    moveSound.play();
     renderer.renderBoard(board.matrix);
     renderer.renderScores([board.player1, board.player2]);
     if (!board.coins) {
