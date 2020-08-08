@@ -47,4 +47,3 @@ Player 2: `I`, `K`, `J`, `L`
 - choosing player name and image
 - enable remote playing (socket io)
 - better css 
-- add sounds

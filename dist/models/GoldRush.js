@@ -10,8 +10,6 @@ export class GoldRush extends Matrix {
     this.player1 = { x: 0, y: 0, icon: 'p1', score: 0 };
     this.player2 = { x: rows - 1, y: columns - 1, icon: 'p2', score: 0 };
     this.coins = 0;
-    this.wallsRatio = 0.2;
-    this.walls = Math.floor(rows * columns * this.wallsRatio);
   }
 
   loadPlayers() {
@@ -33,7 +31,9 @@ export class GoldRush extends Matrix {
   }
 
   loadWalls() {
-    for (let w = 0; w < this.walls; w++) {
+    const wallsRatio = 0.2;
+    const walls = Math.floor(this.rowsNum * this.columnsNum * wallsRatio);
+    for (let w = 0; w < walls; w++) {
       let x = Math.floor(Math.random() * Math.floor(this.rowsNum));
       let y = Math.floor(Math.random() * Math.floor(this.columnsNum));
       if (this.matrix[x][y] === 'e') {
@@ -46,10 +46,12 @@ export class GoldRush extends Matrix {
     this.loadPlayers();
     this.loadWalls();
     this.loadCoins();
+    this.wallsValidation();
   }
 
   move(direction, player) {
     let newPos = { x: player.x, y: player.y };
+
     direction === 'left'
       ? newPos.y--
       : direction === 'right'
@@ -58,7 +60,8 @@ export class GoldRush extends Matrix {
       ? newPos.x--
       : direction === 'down'
       ? newPos.x++
-      : console.log('note valid direction');
+      : null;
+
     if (this.matrix[newPos.x][newPos.y] === 'C') {
       player.score++;
       this.coins--;
@@ -79,6 +82,72 @@ export class GoldRush extends Matrix {
       this.matrix[newPos.x][newPos.y] !== 'e'
     ) {
       console.log(`im sorry im afraid i can't do that`);
+    }
+  }
+
+  //validate wall positioning NOT WORKING YET
+  wallsValidation() {
+    let scroller = { x: 0, y: 0 };
+    let newPos = scroller;
+
+    const moveRight = () => {
+      newPos.y++;
+      if (
+        this.matrix[newPos.x][newPos.y] === 'W' ||
+        !this.matrix[newPos.x][newPos.y]
+      ) {
+        return false;
+      } else {
+        scroller.y++;
+        return scroller;
+      }
+    };
+
+    const moveDown = () => {
+      newPos.x++;
+      if (
+        this.matrix[newPos.x][newPos.y] === 'W' ||
+        !this.matrix[newPos.x][newPos.y]
+      ) {
+        return false;
+      } else {
+        scroller.x++;
+        return scroller;
+      }
+    };
+    let last = 'down';
+    while (scroller.x !== this.player2.x && scroller.y !== this.player2.y) {
+      if (last === 'down') {
+        if (moveRight()) {
+          last = 'right';
+          if (scroller.x === this.player2.x && scroller.y === this.player2.y) {
+            return true;
+          }
+        } else if (moveDown()) {
+          last = 'down';
+          if (scroller.x === this.player2.x && scroller.y === this.player2.y) {
+            return true;
+          }
+        } else {
+          console.log('not valid');
+          return false;
+        }
+      } else {
+        if (moveDown()) {
+          last = 'down';
+          if (scroller.x === this.player2.x && scroller.y === this.player2.y) {
+            return true;
+          }
+        } else if (moveRight()) {
+          last = 'right';
+          if (scroller.x === this.player2.x && scroller.y === this.player2.y) {
+            return true;
+          }
+        } else {
+          console.log('not valid');
+          return false;
+        }
+      }
     }
   }
 }

@@ -16,6 +16,7 @@ body {
   justify-content: center;
   align-items: center;
 }
+
 #board-container {
   width: 90%;
   height: 85vh;
@@ -45,7 +46,6 @@ body {
 #scores-container {
   background-color: #930000;
   width: 60%;
-  font-family: 'Mortal Kombat 2';
   margin: 20px;
   display: flex;
   justify-content: space-around;
@@ -94,7 +94,6 @@ body {
   display: grid;
   justify-items: center;
   align-items: center;
-  font-family: 'Mortal Kombat 2';
   text-align: center;
   color: #930000;
   background-image: url(http://mortalkombatwarehouse.com/mk2/arenas/goroslair/01.png);
@@ -109,7 +108,6 @@ body {
   background-image: linear-gradient(yellow, red);
   width: 30%;
   height: 100%;
-  font-family: 'Mortal Kombat 2';
   font-size: xx-large;
   text-align: center;
 }
@@ -126,7 +124,6 @@ body {
 }
 
 #winner {
-  font-family: 'Mortal Kombat 2';
   font-size: 80px;
   text-align: center;
 }

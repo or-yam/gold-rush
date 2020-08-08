@@ -18,6 +18,7 @@ $('#end-game').hide();
 const newGame = () => {
   const rows = $('#rows').val();
   const columns = $('#columns').val();
+ 
   if (
     rows < matrixLimits.min ||
     rows > matrixLimits.max ||
@@ -25,6 +26,7 @@ const newGame = () => {
     columns > matrixLimits.max
   ) {
     alert(`Only numbers between ${matrixLimits.min} and ${matrixLimits.max}`);
+ 
   } else {
     board = new GoldRush(rows, columns);
     board.loadGame();
@@ -43,6 +45,7 @@ const endGame = () => {
   $('#board-container').hide();
   $('#scores-container').hide();
   $('#end-game').show();
+
   if (board.player1.score > board.player2.score) {
     $('#winner').html(`${board.player1.icon} WINS`);
   } else if (board.player1.score < board.player2.score) {
@@ -50,6 +53,8 @@ const endGame = () => {
   } else {
     $('#winner').html(`NO ONE WINS`);
   }
+
+  board = null;
   endGameSound.play();
 };
 
@@ -62,6 +67,7 @@ $('#play-again-btn').on('click', () => {
 
 $(document).keypress((e) => {
   if (board) {
+  
     e.which === 119
       ? board.move('up', board.player1)
       : e.which === 115
@@ -79,11 +85,14 @@ $(document).keypress((e) => {
       : e.which === 108
       ? board.move('right', board.player2)
       : null;
+
     moveSound.pause();
     moveSound.currentTime = 0;
     moveSound.play();
+
     renderer.renderBoard(board.matrix);
     renderer.renderScores([board.player1, board.player2]);
+   
     if (!board.coins) {
       endGame();
     }
