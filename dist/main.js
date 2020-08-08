@@ -1,6 +1,12 @@
 import { GoldRush } from './models/GoldRush.js';
 import { Renderer } from './views/Renderer.js';
 
+const matrixLimits = { max: 15, min: 4 };
+
+const startGameSound = new Audio('./assets/sounds/newGame.mp3');
+
+
+
 const renderer = new Renderer();
 let board;
 
@@ -11,15 +17,25 @@ $('#end-game').hide();
 const newGame = () => {
   const rows = $('#rows').val();
   const columns = $('#columns').val();
-  board = new GoldRush(rows, columns);
-  board.loadGame();
-  renderer.renderBoard(board.matrix);
-  renderer.renderScores([board.player1, board.player2]);
-  $('#new-game').hide();
-  $('#board-container').show();
-  $('#scores-container').show();
-  $('#rows').val('');
-  $('#columns').val('');
+  if (
+    rows < matrixLimits.min ||
+    rows > matrixLimits.max ||
+    columns < matrixLimits.min ||
+    columns > matrixLimits.max
+  ) {
+    alert(`Only numbers between ${matrixLimits.min} and ${matrixLimits.max}`);
+  } else {
+    board = new GoldRush(rows, columns);
+    board.loadGame();
+    renderer.renderBoard(board.matrix);
+    renderer.renderScores([board.player1, board.player2]);
+    $('#new-game').hide();
+    $('#board-container').show();
+    $('#scores-container').show();
+    $('#rows').val('');
+    $('#columns').val('');
+    startGameSound.play();
+  }
 };
 
 const endGame = () => {
