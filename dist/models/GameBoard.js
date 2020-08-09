@@ -2,7 +2,7 @@ import { Matrix } from './Matrix.js';
 
 const coinSound = new Audio('./assets/sounds/collect.mp3');
 
-export class GoldRush extends Matrix {
+export class GameBoard extends Matrix {
   constructor(rows, columns) {
     super(rows, columns);
     this.rowsNum = rows;

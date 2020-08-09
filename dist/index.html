@@ -3,21 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Gold-Rush</title>
+    <title>MK II Rush</title>
     <link rel="stylesheet" href="styles/mk2Font.css" />
     <link rel="stylesheet" href="./styles/style.css" />
   </head>
   <body>
-    
     <div id="new-game">
       <h1>CHOOSE YOUR DESTINY</h1>
-      <h3>ROWS</h3>
+      <h2>ROWS</h2>
       <input placeholder="#" type="number" id="rows" />
-      <h3>COLUMNS</h3>
+      <h2>COLUMNS</h2>
       <input placeholder="#" type="number" id="columns" />
       <button id="start-btn">
         <img
-          src="http://mortalkombatwarehouse.com/mkx/kk_icons/towers/026.png"
+          src="http://mortalkombatwarehouse.com/mkx/kk_icons/icon_000.png"
           alt=""
         />
       </button>
@@ -51,7 +50,7 @@
     <!-- SCORES-TEMPLATE -->
     <script id="scores-template" type="text/x-handlebars-template">
       {{#each this}}
-        <div class='player'>
+        <div id={{this.icon}} class='player'>
           <div class='plyer-name'>
             <h3>
               {{this.icon}}

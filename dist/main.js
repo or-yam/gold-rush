@@ -1,4 +1,4 @@
-import { GoldRush } from './models/GoldRush.js';
+import { GameBoard } from './models/GameBoard.js';
 import { Renderer } from './views/Renderer.js';
 
 const matrixLimits = { max: 15, min: 4 };
@@ -18,7 +18,7 @@ $('#end-game').hide();
 const newGame = () => {
   const rows = $('#rows').val();
   const columns = $('#columns').val();
- 
+
   if (
     rows < matrixLimits.min ||
     rows > matrixLimits.max ||
@@ -26,9 +26,8 @@ const newGame = () => {
     columns > matrixLimits.max
   ) {
     alert(`Only numbers between ${matrixLimits.min} and ${matrixLimits.max}`);
- 
   } else {
-    board = new GoldRush(rows, columns);
+    board = new GameBoard(rows, columns);
     board.loadGame();
     renderer.renderBoard(board.matrix);
     renderer.renderScores([board.player1, board.player2]);
@@ -67,7 +66,6 @@ $('#play-again-btn').on('click', () => {
 
 $(document).keypress((e) => {
   if (board) {
-  
     e.which === 119
       ? board.move('up', board.player1)
       : e.which === 115
@@ -92,7 +90,7 @@ $(document).keypress((e) => {
 
     renderer.renderBoard(board.matrix);
     renderer.renderScores([board.player1, board.player2]);
-   
+
     if (!board.coins) {
       endGame();
     }
