@@ -46,4 +46,3 @@ Player 2: `I`, `K`, `J`, `L`
 - validation to wall generation that makes sure walls aren't blocking a coin/a path to the other side of the board.
 - choosing player name and image
 - enable remote playing (socket io)
-- better css 
