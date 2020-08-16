@@ -8,6 +8,8 @@ const endGameSound = new Audio('./assets/sounds/endGame.mp3');
 const moveSound = new Audio('./assets/sounds/right.mp3');
 const reMatchSound = new Audio('./assets/sounds/rematch.mp3');
 
+const tieMessageSTR = 'No One Wins';
+
 const renderer = new Renderer();
 let board;
 
@@ -50,7 +52,7 @@ const endGame = () => {
   } else if (board.player1.score < board.player2.score) {
     $('#winner').html(`${board.player2.icon} WINS`);
   } else {
-    $('#winner').html(`NO ONE WINS`);
+    $('#winner').html(tieMessageSTR);
   }
 
   board = null;
