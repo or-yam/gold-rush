@@ -1,4 +1,4 @@
-# Mortal Kombat Rush 🐱‍👤
+# Mortal Kombat Rush 
 
 #### A web game for 2 players.
 
@@ -17,17 +17,20 @@ Player 2: `I`, `K`, `J`, `L`
 
 ## How to Use
 
-(assuming you have [nodejs](https://nodejs.org/en/) installed)
+#### [Play Online](https://mk-dragon-rush.herokuapp.com/)
 
-1. clone the repo
+### To run on localhost:
 
-2. run `npm install` in your terminal
+1. run:
 
-3. run `node server.js`
+```
+npm install
+npm start
+```
 
-4. open `http://localhost:3300` in your browser.
-5. choose the size of the board matrix (rows and columns)
-6. Enjoy 🕹🙂
+2. open `http://localhost:3300` in your browser.
+3. choose the size of the board matrix (rows and columns)
+4. Enjoy 🕹
 
 ### Screenshots
 
@@ -46,3 +49,5 @@ Player 2: `I`, `K`, `J`, `L`
 - validation to wall generation that makes sure walls aren't blocking a coin/a path to the other side of the board.
 - choosing player name and image
 - enable remote playing (socket io)
+- fix deleted images on welcome screen
+- make better styles
