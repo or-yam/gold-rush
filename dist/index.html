@@ -6,6 +6,11 @@
     <title>MK II Rush</title>
     <link rel="stylesheet" href="styles/mk2Font.css" />
     <link rel="stylesheet" href="./styles/style.css" />
+    <link
+      rel="icon"
+      href="https://upload.wikimedia.org/wikipedia/sco/b/b1/Mortal_Kombat_Logo.svg"
+      type="svg"
+    />
   </head>
   <body>
     <div id="new-game">
@@ -14,11 +19,13 @@
       <input placeholder="#" type="number" id="rows" />
       <h2>COLUMNS</h2>
       <input placeholder="#" type="number" id="columns" />
-      <button id="start-btn">
+      <button id="start-btn" style="display: grid ">
         <img
-          src="http://mortalkombatwarehouse.com/mkx/kk_icons/icon_000.png"
-          alt=""
+          style="width: 250px"
+          src="https://upload.wikimedia.org/wikipedia/sco/b/b1/Mortal_Kombat_Logo.svg"
+          alt="start"
         />
+        <span>START</span>
       </button>
     </div>
 
@@ -40,7 +47,7 @@
       {{#each this}}
         <div class='row'>
           {{#each this}}
-            <div class="box {{this}}">
+            <div class='box {{this}}'>
             </div>
           {{/each}}
         </div>
