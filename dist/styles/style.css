@@ -46,7 +46,6 @@ body {
   align-self: center;
   justify-content: center;
   align-content: center;
-  border: 2px solid black;
 }
 
 #scores-container {
@@ -120,6 +119,7 @@ body {
 }
 
 #new-game input {
+  outline: none;
   background-image: linear-gradient(#f1c40f, var(--main-color));
   height: 100%;
   font-size: xx-large;
@@ -129,6 +129,7 @@ body {
 }
 
 #start-btn {
+  outline: none;
   background-color: var(--main-color);
   border: none;
   box-shadow: var(--shadow);
@@ -149,6 +150,7 @@ body {
 }
 
 #play-again-btn {
+  outline: none;
   font-size: xx-large;
   background-color: var(--main-color);
   border: none;
