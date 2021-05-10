@@ -1,8 +1,10 @@
-import { Matrix } from './Matrix.js';
+import Matrix from './Matrix.js';
 
+const COINS_RATIO = 0.5;
+const WALLS_RATIO = 0.2;
 const coinSound = new Audio('./assets/sounds/collect.mp3');
 
-export class GameBoard extends Matrix {
+export default class GameBoard extends Matrix {
   constructor(rows, columns) {
     super(rows, columns);
     this.rowsNum = rows;
@@ -18,8 +20,7 @@ export class GameBoard extends Matrix {
   }
 
   loadCoins() {
-    const ratio = 0.5;
-    const coinsAmount = Math.floor(this.rowsNum * this.columnsNum * ratio);
+    const coinsAmount = Math.floor(this.rowsNum * this.columnsNum * COINS_RATIO);
     for (let c = 0; c < coinsAmount; c++) {
       let x = Math.floor(Math.random() * Math.floor(this.rowsNum));
       let y = Math.floor(Math.random() * Math.floor(this.columnsNum));
@@ -31,8 +32,7 @@ export class GameBoard extends Matrix {
   }
 
   loadWalls() {
-    const wallsRatio = 0.2;
-    const walls = Math.floor(this.rowsNum * this.columnsNum * wallsRatio);
+    const walls = Math.floor(this.rowsNum * this.columnsNum * WALLS_RATIO);
     for (let w = 0; w < walls; w++) {
       let x = Math.floor(Math.random() * Math.floor(this.rowsNum));
       let y = Math.floor(Math.random() * Math.floor(this.columnsNum));
@@ -50,7 +50,7 @@ export class GameBoard extends Matrix {
   }
 
   move(direction, player) {
-    let newPos = { x: player.x, y: player.y };
+    const newPos = { x: player.x, y: player.y };
 
     direction === 'left'
       ? newPos.y--
@@ -77,10 +77,7 @@ export class GameBoard extends Matrix {
       player.x = newPos.x;
       player.y = newPos.y;
       this.loadPlayers();
-    } else if (
-      !this.matrix[newPos.x][newPos.y] ||
-      this.matrix[newPos.x][newPos.y] !== 'e'
-    ) {
+    } else if (!this.matrix[newPos.x][newPos.y] || this.matrix[newPos.x][newPos.y] !== 'e') {
       console.log(`im sorry im afraid i can't do that`);
     }
   }
@@ -92,10 +89,7 @@ export class GameBoard extends Matrix {
 
     const moveRight = () => {
       newPos.y++;
-      if (
-        this.matrix[newPos.x][newPos.y] === 'W' ||
-        !this.matrix[newPos.x][newPos.y]
-      ) {
+      if (this.matrix[newPos.x][newPos.y] === 'W' || !this.matrix[newPos.x][newPos.y]) {
         return false;
       } else {
         scroller.y++;
@@ -105,10 +99,7 @@ export class GameBoard extends Matrix {
 
     const moveDown = () => {
       newPos.x++;
-      if (
-        this.matrix[newPos.x][newPos.y] === 'W' ||
-        !this.matrix[newPos.x][newPos.y]
-      ) {
+      if (this.matrix[newPos.x][newPos.y] === 'W' || !this.matrix[newPos.x][newPos.y]) {
         return false;
       } else {
         scroller.x++;

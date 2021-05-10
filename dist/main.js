@@ -1,14 +1,14 @@
-import { GameBoard } from './models/GameBoard.js';
-import { Renderer } from './views/Renderer.js';
+import GameBoard from './models/GameBoard.js';
+import Renderer from './views/Renderer.js';
 
 const matrixLimits = { max: 15, min: 4 };
+const tieMessage = 'No One Wins';
 
 const startGameSound = new Audio('./assets/sounds/newGame.mp3');
 const endGameSound = new Audio('./assets/sounds/endGame.mp3');
 const moveSound = new Audio('./assets/sounds/right.mp3');
 const reMatchSound = new Audio('./assets/sounds/rematch.mp3');
 
-const tieMessageSTR = 'No One Wins';
 
 const renderer = new Renderer();
 let board;
@@ -21,12 +21,7 @@ const newGame = () => {
   const rows = $('#rows').val();
   const columns = $('#columns').val();
 
-  if (
-    rows < matrixLimits.min ||
-    rows > matrixLimits.max ||
-    columns < matrixLimits.min ||
-    columns > matrixLimits.max
-  ) {
+  if (rows < matrixLimits.min || rows > matrixLimits.max || columns < matrixLimits.min || columns > matrixLimits.max) {
     alert(`Only numbers between ${matrixLimits.min} and ${matrixLimits.max}`);
   } else {
     board = new GameBoard(rows, columns);
@@ -52,7 +47,7 @@ const endGame = () => {
   } else if (board.player1.score < board.player2.score) {
     $('#winner').html(`${board.player2.icon} WINS`);
   } else {
-    $('#winner').html(tieMessageSTR);
+    $('#winner').html(tieMessage);
   }
 
   board = null;
@@ -66,7 +61,7 @@ $('#play-again-btn').on('click', () => {
   setTimeout(() => (window.location.href = '/'), 1500);
 });
 
-$(document).keypress((e) => {
+$(document).keypress(e => {
   if (board) {
     e.which === 119
       ? board.move('up', board.player1)

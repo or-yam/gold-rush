@@ -1,4 +1,4 @@
-export class Matrix {
+export default class Matrix {
   constructor(rows, columns) {
     this.matrix = this.generateMatrix(rows, columns);
   }
@@ -56,5 +56,3 @@ export class Matrix {
     }
   }
 }
-
-

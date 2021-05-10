@@ -1,4 +1,4 @@
-export class Renderer {
+export default class Renderer {
   renderBoard(matrix) {
     const source = $('#board-template').html();
     const template = Handlebars.compile(source);

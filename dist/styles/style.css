@@ -3,6 +3,7 @@
   --player1-color: #3498db;
   --player2-color: #f1c40f;
   --background-color: #73726d;
+  --background-color-main: #2d2f31;
   --shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.7);
 }
 
@@ -13,7 +14,7 @@
 }
 
 body {
-  background-color: #2d2f31;
+  background-color: var(--background-color-main);
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -27,7 +28,6 @@ body {
   height: 85vh;
   display: flex;
   flex-direction: column;
-  margin: 0;
   margin: 10px;
 }
 
